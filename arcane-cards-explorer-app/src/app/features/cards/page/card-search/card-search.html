@@ -1,1 +1,12 @@
-<p>card-search works!</p>
+<input [(ngModel)]="query" placeholder="Buscar carta..." />
+<button (click)="search()">Buscar</button>
+
+@for (card of cardsService.cards(); track card.id) {
+    <div>
+        <h3>{{card.name}} {{card.mana_cost}}</h3>
+        @if (card.image_uris?.normal) {
+            <img [src]="card.image_uris?.normal" />
+        }
+        <p>{{card.type_line}}</p>
+    </div>
+}
