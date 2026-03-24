@@ -1,12 +1,27 @@
+<div class="content">
 <input [(ngModel)]="query" placeholder="Buscar carta..." />
 <button (click)="search()">Buscar</button>
 
-@for (card of cardsService.cards(); track card.id) {
-    <div>
-        <h3>{{card.name}} {{card.mana_cost}}</h3>
-        @if (card.image_uris?.normal) {
-            <img [src]="card.image_uris?.normal" />
-        }
-        <p>{{card.type_line}}</p>
-    </div>
+@if (cardsService.loading()) {
+    <p>Cargando...</p>
 }
+
+<div class="card-grid">
+    @for (card of cardsService.cards(); track card.id) {
+        <div class="card-grid-item">
+            <div class="card-grid-item-card">
+                <h3>{{card.name}} {{card.mana_cost}}</h3>
+                @if (card.image_uris?.normal) {
+                    <img [src]="card.image_uris?.normal" />
+                }
+                <p>{{card.type_line}}</p>
+            </div>
+        </div>
+    }
+</div>
+
+@if (cardsService.nextPage()) {
+    <button (click)="cardsService.loadMore()" [disabled]="cardsService.loading()">Cargar más</button>
+}
+</div>
+

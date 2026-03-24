@@ -1,0 +1,24 @@
+.content {
+    max-width: 1080px;
+}
+.card-grid {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    padding: 0 2.5%;
+    margin: 20px 0 15px 0;
+    justify-content: space-between;
+}
+
+.card-grid-item {
+    width: 24.5%;
+}
+
+.card-grid-item-card {
+    display: block;
+}
+
+.card-grid-item-card img {
+    width: 100%;
+    max-width: 245px;
+}

@@ -18,4 +18,8 @@ export class CardSearch {
       this.cardsService.searchCards(this.query.trim());
     }
   }
+
+  loadMore() {
+    this.cardsService.loadMore();
+  }
 }
